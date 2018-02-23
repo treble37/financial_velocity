@@ -14,9 +14,9 @@ defmodule FinancialVelocity.Cli do
   end
 
   defp output_report(opts) do
-    IO.puts "Your initial amount is #{principal(opts)}"
+    IO.puts "Your initial amount is #{format_amount(principal(opts))}"
     IO.puts "Your assumed percentage growth is #{percent(opts) * 100.0}"
-    IO.puts "Your assumed monthly savings is #{saving(opts)}"
+    IO.puts "Your assumed monthly savings is #{format_amount(saving(opts))}"
     IO.puts "==============="
     IO.puts "Your final amount after #{years(opts)} year(s) will be:"
     amount =

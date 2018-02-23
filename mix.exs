@@ -7,8 +7,13 @@ defmodule FinancialVelocity.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript_config()
     ]
+  end
+
+  defp escript_config do
+    [main_module: FinancialVelocity.Cli]
   end
 
   # Run "mix help compile.app" to learn about applications.

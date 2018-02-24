@@ -8,7 +8,7 @@ defmodule FinancialVelocity.Cli do
   defp parse_options(args) do
     {options, _args}  = OptionParser.parse!(args,
     switches: [principal: :float, percent: :float, saving: :float,
-      years: :integer]
+      years: :integer, withdrawal: :float]
     )
     options
   end
@@ -21,14 +21,17 @@ defmodule FinancialVelocity.Cli do
     IO.puts "Your final amount after #{years(opts)} year(s) will be:"
     amount =
       FinancialVelocity.calculate(principal(opts), percent(opts), saving(opts), years(opts))
-      |> format_amount
-    IO.puts amount
+    IO.puts amount |> format_amount
+    IO.puts "==============="
+    IO.puts "Your assumed withdrawal rate of #{withdrawal_rate(opts) * 100.0}%"
+    IO.puts "means you will have #{format_amount(withdrawal_rate(opts) * amount)} yearly to spend"
   end
 
   defp principal(opts), do: opts |> Keyword.get(:principal, 500.0e3)
   defp percent(opts), do: opts |> Keyword.get(:percent, 0.1)
   defp saving(opts), do: opts |> Keyword.get(:saving, 3000.0)
   defp years(opts), do: opts |> Keyword.get(:years, 1)
+  defp withdrawal_rate(opts), do: opts |> Keyword.get(:withdrawal, 0.03)
   defp format_amount(amount) do
     # source: https://stackoverflow.com/questions/43536481/how-to-format-a-number-to-precision-in-elixir
     "$" <> (:io_lib.format("~.2f", [amount]) |> IO.iodata_to_binary)

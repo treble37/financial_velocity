@@ -8,6 +8,20 @@ total_amount_at_end_of_year = initial_amount_at_year_start * (1 + percentage_gai
 
 Note that it's a rough estimate that I got from a financial book somewhere...
 
+## Running
+
+### Step 1: Build
+
+```
+$ mix escript.build
+```
+
+### Step 2: Run
+
+```
+$ ./financial_velocity --principal=500.0e3 --percent=0.09  --saving=3000 --years=5 --withdrawal=0.03
+```
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed

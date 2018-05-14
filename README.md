@@ -8,6 +8,10 @@ total_amount_at_end_of_year = initial_amount_at_year_start * (1 + percentage_gai
 
 Note that it's a rough estimate that I got from a financial book somewhere...
 
+## Other Notes
+
+This is also to experiment with Tasks / Agents / GenServers / etc
+
 ## Running
 
 ### Step 1: Build

@@ -1,4 +1,4 @@
-defmodule HistoricalData do
+defmodule FinancialVelocity.HistoricalData do
   # data source: http://www.moneychimp.com/features/market_cagr.htm
   def sp500_annual_return_list do
     [
